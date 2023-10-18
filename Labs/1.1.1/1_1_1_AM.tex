@@ -1,0 +1,362 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[a4paper,top=1.5cm, bottom=1.5cm, left=1cm, right=1cm]{geometry}
+\usepackage{cmap}					
+\usepackage{mathtext} 				
+\usepackage[T2A]{fontenc}			
+\usepackage[utf8]{inputenc}			
+\usepackage[english,russian]{babel}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,urlcolor=blue}
+\usepackage[rgb]{xcolor}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} 
+\usepackage{icomma} 
+\usepackage{euscript}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage{caption}
+\usepackage{enumerate}
+\mathtoolsset{showonlyrefs=true}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{pgfplots}
+
+\usepackage[europeanresistors, americaninductors]{circuitikz}
+ \DeclareMathOperator{\sgn}{\mathop{sgn}}
+\newcommand*{\hm}[1]{#1\nobreak\discretionary{}
+	{\hbox{$\mathsurround=0pt #1$}}{}}
+
+
+\title{\textbf{Определение систематических и случайных погрешнойстей при измерении удельного сопротивления нихромовой проволоки (1.1.1)}}
+\author{Манро Эйден}
+\date{}
+
+
+
+
+\begin{document}
+	
+	
+	\maketitle
+	      
+	
+	
+	\begin{center}
+	\section*{Введение}    
+	\end{center}      
+	
+	
+\textbf{Цель работы:} измерить удельное сопротивление проволоки и вычислить систематические и случайные погрешности при использовании таких измерительных приборов, как линейка, штангенциркуль, микрометр, амперметр, вольтметр и мост постоянного тока.
+	\bigskip\\
+	\textbf{Оборудование:} линейка, штангенциркуль, микрометр, отрезок проволоки из нихрома, амперметр, вольтметр, источник ЭДС, мост постоянного тока, реостат, ключ.
+ 
+	\begin{center}
+	\section*{Теоритические сведения}
+	\end{center}	
+ 
+		В данной работе измерять сопротивление $R_\text{пр}$ предлагается с помощью схемы, представленной на рис. 1.
+			
+		\begin{figure}[h]
+			\centering
+			\begin{subfigure}[t]{0.45\textwidth}
+				\centering
+				\begin{circuitikz}
+					\draw (4.25, 0) to [pR, -., mirror, l=$R$, name=P] (3.1, 0)
+					to [battery1, -., l=$\mathscr{E}$] (1, 0)
+					to [rmeter, t=A] (1, -1.25)
+					to [R, l=$R_A$] (1, -2.5)
+					to (1, -4)
+					to [rmeter, t=V] (2.5, -4)
+					to [R, l=$R_V$] (4, -4)
+					to (4.5, -4)
+					to [nos] (4.5, 0)
+					to (4.25, 0);
+					\draw (3, 0) to [short] (2.8, 0) to [short] (2.8, 0.558) to (P.wiper);
+					\draw (1, -3) to [R, l=$R_\text{пр}$] (4.5, -3) to (4.5, -3);
+					\draw (1, -3) node[circ]{}
+					(4.5, -3) node[circ]{};
+			\end{circuitikz}
+			\captionsetup{labelformat=empty}
+		\end{subfigure}
+		%
+		
+	\caption{Схема для измерения сопротивления}
+	\end{figure}
+	
+	Пусть $V$ и $I$ -- показания вольтметра и амперметра, при расчете сопротивление $R_\text{пр1} = V/I$. Найденное сопротивление будет отличаться от искомого $R_\text{пр}$ из-за внутренних сопротивлений приборов.
+	
+	\begin{center}{Учитывая сопротивления приборов получаем:}
+	\end{center}
+    \begin{center}
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\begin{equation}\label{r1}
+			R_\text{пр1} = \frac{V}{I} = R_\text{пр}\frac{R_V} {R_\text{пр} + R_V} \: (1)
+		\end{equation}
+	\end{minipage}
+    \end{center}
+
+	
+	\begin{center}
+		Формулу (1) можно преобразовать:
+	
+		\begin{minipage}{0.45\textwidth}
+			\centering
+			\begin{equation}\label{r3}
+				R_\text{пр} = \frac{R_\text{пр1}}{1 - \left(\frac{R_\text{пр1}}{R_V} \right)} \approx R_\text{пр1}\left(1 + \frac{R_\text{пр1}}{R_V} \right)
+			\end{equation}
+		\end{minipage}
+
+	\end{center}
+		
+	
+	
+	Более точным методом измерения сопротивлений является метод моста постоянного тока (мост Уитстона).
+\begin{center}
+\section*{Задание}  
+\end{center}
+
+        \begin{center}
+	\subsection*{Знакомство со штангенциркулем и микрометром}
+	\end{center}
+ 
+	\textbf{Штангенциркуль:} $ \sigma_\text{ш} = 0,1 \text{ мм}$\\
+	\textbf{Микрометр:} $ \sigma_\text{м} = 0,01 \text{ мм}$
+	
+	\begin{center}
+	\subsection*{Измерение диаметра проволоки}
+        \end{center}
+	\begin{table}[h]
+		\begin{center}
+			\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+				\hline
+				№ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & ср. \\
+				\hline
+				$d_\text{ш}$, мм & 0,4 & 0,4& 0,4& 0,4& 0,4& 0,4& 0,4& 0,4& 0,4& 0,4& 0,4\\ 
+				\hline
+				$d_\text{м}$, мм & 0,37 & 0,36 & 0,36 & 0,36 & 0,37& 0,36& 0,36& 0,36& 0,36& 0,36& 0,36\\ 
+				\hline
+			\end{tabular}
+		\end{center}
+		\caption{Результаты измерения диаметра проволоки}
+		\label{dtab}
+	\end{table}
+	
+	При измерении штангенциркулем случайная погрешность отсутствует, а значит можно учитывать только системную погрешность: $d_\text{ш} = \left( 0,4 \pm 0,1 \right) \text{ мм}$.
+
+	При измерении же микрометром нужно учитывать и системную и случайную погрешость:
+	$$\sigma_\text{сист}=0,01\text{ мм}\;\;\;\;\;\; \sigma_\text{сл}=\frac{1}{N} \sqrt{\sum_{i=1}^{n}(d_i - \overline{d})^2}=\frac{1}{10} \sqrt{3\cdot 10^{-4}}\approx 1.7\cdot 10^{-3} \text{ мм}$$
+	$$\sigma_{d_\text{м}} = \sqrt{\sigma_\text{сист}^2+\sigma_\text{сл}^2}\approx 0,01 \text{ мм}$$
+	\noindent тогда $d_\text{м} = \left( 0,36 \pm 0,01 \right) \text{ мм}$.
+	
+	Площадь поперечного сечения проволоки можно вычислить зная диаметр, используя диаметр найденный с помощью микрометра мы уменьшим погрешность площади. Вычислим площадь и ее погрешность:
+	
+	\begin{equation}
+		S_\text{пр} = \frac{\pi d_\text{м}^2}{4} = \frac{3,1415\cdot (0,36)^2}{4} \approx 0,1 \text{ мм}^2
+	\end{equation}
+	
+	\begin{equation}
+		\sigma_S = 2\frac{\sigma_{d_\text{м}}}{d_\text{м}}\cdot S = 2\frac{0,01}{0,36} \cdot 0,1 \approx 5,6\cdot 10^{-3} \text{ мм}^2
+	\end{equation}
+
+	С учетом погрешности получаем, что $S_\text{пр} = \left( 0,1 \pm 5,6 \cdot 10^{-3}\right) \text{ мм}^2$ т.е. площадь поперченого сечения определена с точностью 5,6\%
+ 
+        \newpage
+        \centering
+	\subsection*{Характеристики измерительных приборов}
+	\begin{longtable}[H]{|c|c|c|}
+		\hline
+		& Вольтметр & Миллиамперметр\\
+		\hline
+		Система & Магнитоэлектрическая & Цифровая \\
+		Класс точности & 0,2 & --- \\
+		Шкала & линейная, 150 делений & ---\\
+            Предел измерений & 0,6 В & 2 A \\
+		Цена делений & 4 мВ/дел & ---\\
+		Чувствительность  & 250 дел/В & --- \\
+            Внутреннее сопротивление прибора & 4000 Ом & 1,4 Ом \\
+		  Погрешность со шкалы (0,5 ц.д.)  & 2 мВ & ---\\
+            Макс. погрешность & 1,2 мВ (0,2 \%) & --- \\
+            Разрядность дисплея & --- & 5 ед. \\
+            Погрешность & --- & 0,002 $\cdot$ x + 2 $\cdot$ 0,01 мА \\
+		\hline
+	\end{longtable}
+
+	\centering
+	\subsection*{Снятие показаний вольтметра и амперметра, обработка данных}
+	
+	Собираем схему и снимаем данные для разных длин проволоки: \\ $l_1=(20,0 \pm 0,2)\text{ см}$; $l_2=(30,0 \pm 0,2) \text{, см}$; $ l_3=(50,0 \pm 0,2)\text{ см}$. Получаем:
+	\begin{longtable}[H]{|c|c||c|c||c|c|}
+		\hline
+		\multicolumn{2}{|c||}{$l = 20 \text{ см}$} & \multicolumn{2}{c||}{$l = 30 \text{ см}$} & \multicolumn{2}{c|}{$l = 50 \text{ см}$}  \\
+		\hline
+		 V, мВ & I, мА & V, мВ & I, мА & V, мВ & I, мА \\
+		\hline
+		  232 & 106,8 & 372 & 113,1  & 472 & 87,3 \\
+		\hline
+		  220 & 98,9 & 348 & 105,2  & 448 & 83,5 \\
+		\hline
+		  200 & 90,7 & 320 & 96,8  & 420 & 77,5 \\
+		\hline
+		  184 & 83,1 & 280 & 85,2 & 384 & 71,3 \\
+		\hline
+		  164 & 74,8 & 264 & 79,6  & 372 & 68,7 \\
+		\hline
+		  152 & 70,0 & 240 & 73,3  & 344 & 63,8 \\
+		\hline
+		  124 & 56,9 & 232 & 70,2  & 296 & 54,5 \\
+		\hline
+		  112 & 51,1 & 180 & 55,0  & 244 & 45,5 \\
+		\hline
+		  100 & 45,3 & 120 & 36,2  & 201 & 37,5 \\
+		\hline
+		  68 & 31,3  & 92 & 27,9  & 140 & 26,1 \\
+		\hline
+		\caption{Снятая зависимость $V(I)$ для различных длин проволоки}
+	\end{longtable}
+
+
+	
+	Для каждой длины проволоки $l$ найдем  сопротивление и погрешности методом наименьших квадратов по формулам:
+	
+	\begin{equation}
+		R_\text{ср} = \frac{\langle V\rangle}{\langle I \rangle}
+	\end{equation}
+
+
+	
+        \centering
+        \begin{equation}
+            \sigma_{R_\text{ср}}^{\text{случ}} = \frac{1}{\sqrt{n - 1}}\sqrt{\frac{\langle V^2 \rangle}{\langle I^2 \rangle} - R_\text{ср}^2}
+        \end{equation}
+    
+    
+        \centering
+        
+        \begin{equation}
+            \sigma_{R_\text{ср}}^{\text{сист}} = R_\text{ср}\sqrt{\left(\frac{\sigma_V}{V} \right)^2 + \left(\frac{\sigma_I}{I} \right)^2}
+        \end{equation}
+	
+
+ 
+	\begin{equation}
+		\sigma_{R_\text{ср}} = \sqrt{\sigma_{\text{сист}}^2 + \sigma_{\text{случ}}^2}
+	\end{equation}
+	\newpage
+	\noindent где $V$ и $I$ -- максимальные значения тока и напряжений, $\sigma_V = 2 \text{ мВ}$, а $\sigma_I = 0,6 \text{ мА}$, $n$ = 10. Рассчитываем сопротивление с учетом поправки для схемы и погрешности:
+	
+	\begin{longtable}[H]{|c||c||c|}
+		\hline
+		$l = 20 \text{ см}$ & $l = 30 \text{ см}$ & $l = 50 \text{ см}$ \\
+		\hline
+		$R_\text{ср} = 2,194 \text{ Ом}$ & $R_\text{ср} = 3,296 \text{ Ом}$ & $R_\text{ср} = 5,393 \text{ Ом}$ \\
+		\hline
+		$\sigma_R^\text{случ} = 0,033\text{ Ом}$ & $\sigma_R^\text{случ} = 0,031\text{ Ом}$ & $\sigma_R^\text{случ} = 0,057\text{ Ом}$ \\
+		\hline
+		$\sigma_R^\text{сист} = 0,022 \text{ Ом}$ & $\sigma_R^\text{сист} = 0,040 \text{ Ом}$ & $\sigma_R^\text{сист} = 0,043 \text{ Ом}$ \\
+		\hline
+		$\sigma_{R_\text{ср}} = 0,039 \text{ Ом}$ & $\sigma_{R_\text{ср}} = 0,050 \text{ Ом}$ & $\sigma_{R_\text{ср}} = 0,071 \text{ Ом}$ \\
+		\hline
+		
+		\caption{Экспериментально полученные сопротивления и погрешности}
+		\label{R}
+	\end{longtable}
+	
+	\subsection*{Нахождение сопротивления с помощью моста}
+	
+	\begin{longtable}[H]{|c|c|c|c|}
+		\hline
+		l, см & 20 & 30 & 50 \\
+		\hline
+		$R_\text{пр} \text{, Ом}$ & 2,208 & 3,390 & 5,375 \\
+		\hline
+		
+		\caption{Сопротивления, полученные с помощью моста}
+		\label{most}
+	\end{longtable}
+	
+	Сравниваем полученные экспериментальным путем результаты с полученными на мосте. Результаты измерений всех трех длин попадают в предел $\pm2\sigma_R$ из таб.\ref{R}.
+	
+	\subsection*{Вычисление удельного сопроивления проволоки}
+	
+	Удельное сопротивление проволоки изготовленной из однородного материала и погрешность могут быть определены по формулам:
+	
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\begin{equation}
+			\rho = R_\text{пр}\cdot\frac{S_\text{пр}}{l} = \frac{R_\text{пр}}{l} \cdot \frac{\pi d^2}{4}
+		\end{equation}
+	\end{minipage}
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\begin{equation}
+			\sigma_\rho = \rho\sqrt{\left(\frac{\sigma_R}{R}\right)^2 + \left( 2\frac{\sigma_d}{d} \right)^2 + \left( \frac{\sigma_l}{l}\right)^2}
+		\end{equation}
+		
+	\end{minipage}
+	
+	\bigskip
+	\noindent где $R_\text{пр}$ -- сопротивление измеряемого отрезка проволоки, $S_\text{пр}$ -- площадь поперечного сечения проволоки, $l$ -- его длина, а $d$ -- диаметр проволоки.
+	
+	Занесем полученные результаты в таблицу:
+	\begin{longtable}[H]{|c||c||c|}
+		\hline
+		$l \text{, см}$ & $\rho$, $ 10^{-6} \text{ Ом} \cdot \text{мм}^2 /\text{м}$ & $\sigma_\rho$, $ 10^{-6} \text{ Ом} \cdot \text{мм}^2 / \text{м}$\\
+		\hline
+		20 & 1,104 & 0,065\\
+		\hline
+		30 & 1,130 & 0,066\\
+		\hline
+		50 & 1,075 & 0,065\\
+		\hline
+		\caption{Удельные сопротивления участков проволоки различной длины}
+	\end{longtable}
+
+	Усредним резлультаты и получим: $\rho_{\text{ср}} = \left( 1,103 \pm 0,065 \right) \cdot 10^{-6} \text{ Ом}\cdot \text{мм}^2/\text{м}$.
+	
+	\subsection*{Вывод}
+	
+	В работе получено значение удельного сопротивления образца проволоки из нихромового сплава с точностью 5,6 \%. Допустимые значения удельного сопротивления нихрома: $\rho_\text{таб} = (0,97 - 1,14) \cdot 10^{-6} \text{ Ом}\cdot \text{мм}^2/\text{м}$. Измеренные значения попадают в этот диапазон в пределах одного стандартного отклонения, однако погрешность результата не позволяет определить марку сплава.
+ 
+        Использованный в работе метод измерения сопротивлений позволил получить значения 
+    образцов с довольно высокой точностью, которая ограничивалась в основном погрешностью аналогового вольтметра.
+	
+	При измерении диаметра проволоки точность микрометра оказалась слишком низкой для исследования проволоки на однородность по длине.
+	
+	
+		
+	
+
+    \bigskip
+
+    \space
+
+    \pgfplotsset{width= 18cm,compat=1.9}
+    
+    \begin{figure}
+        \centering
+        \caption{ВАХ}
+    \end{figure}
+    \begin{tikzpicture}
+    \begin{axis}[xlabel={мА}, ylabel={мВ}]
+        \legend{L = 20 см,
+                L = 30 см,
+                L = 50 см};
+        \addplot[red] table{data.txt};
+        \addplot[blue] table{data2.txt};
+        \addplot[green] table{data3.txt};
+
+    \end{axis}
+
+
+    \end{tikzpicture}
+
+
+
+ \end{document}
