@@ -1,4 +1,4 @@
-# study-data
+# study data
 MIPT DREC lectures, seminars, homeworks, labs &amp; lots more
 
 I'll quickly describe the nuances:
